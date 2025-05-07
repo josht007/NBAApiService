@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Teams</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Basketball Teams</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-<h1>NBA Teams</h1>
-<div id="teams">
+
+<header>
+    <h1>NBA Basketball Teams</h1>
+</header>
+
+<div class="teams-container">
+    <div th:each="team : ${teams}" class="team-card">
+        <h2 th:text="${team.name}">Team Name</h2>
+        <p th:text="'Abbreviation: ' + ${team.abbreviation}">Abbreviation</p>
+        <p th:text="'City: ' + ${team.city}">City</p>
+        <p th:text="'Conference: ' + ${team.conference}">Conference</p>
+        <p th:text="'Division: ' + ${team.division}">Division</p>
+    </div>
 </div>
 
-<script src="/app.js"></script>
+<script src="/static/app.js"></script>
 </body>
 </html>

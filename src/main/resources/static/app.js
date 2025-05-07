@@ -1,23 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("/api/teams")
-        .then(response => response.json())
-        .then(data => {
-            const teamsDiv = document.getElementById("teams");
-            teamsDiv.innerHTML = "";
+    const teamsContainer = document.querySelector(".teams-container");
+    const teams = Array.from(teamsContainer.children);
 
-            data.data.forEach(team => {
-                const teamDiv = document.createElement("div");
-                teamDiv.classList.add("team");
-                teamDiv.innerHTML = `
-                    <h3>${team.full_name}</h3>
-                    <p>City: ${team.city}</p>
-                    <p>Conference: ${team.conference}</p>
-                    <p>Division: ${team.division}</p>
-                `;
-                teamsDiv.appendChild(teamDiv);
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching team data:", error);
-        });
+    teams.sort((a, b) => {
+        const nameA = a.querySelector("h2").innerText;
+        const nameB = b.querySelector("h2").innerText;
+        return nameA.localeCompare(nameB);
+    });
+
+    teamsContainer.innerHTML = "";
+    teams.forEach(team => teamsContainer.appendChild(team));
 });
