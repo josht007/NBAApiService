@@ -1,9 +1,8 @@
 package com.josh007.nbaapiservice;
 
-import com.josh007.nbaapiservice.BasketballTeam;
-import com.josh007.nbaapiservice.BasketballTeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.josh007.nbaapiservice.BasketballTeamRepository;
 
 import java.util.List;
 
@@ -11,11 +10,9 @@ import java.util.List;
 public class BasketballTeamService {
 
     @Autowired
-    private BasketballTeamRepository repository;
+    private BasketballTeamRepository basketballTeamRepository;
 
     public List<BasketballTeam> getAllTeams() {
-        return repository.findAll();  // Fetches all teams from the database
+        return basketballTeamRepository.findAll();  // Fetch all teams
     }
-
-    // You can add more methods here for querying specific teams
 }
